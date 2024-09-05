@@ -1,3 +1,5 @@
+import { MdOutlineStar } from "react-icons/md";
+
 const ProductCard = () => {
   const product = {
     id: 1,
@@ -61,15 +63,23 @@ const ProductCard = () => {
 
   return (
     <>
-      <div className="card" style={{ width: "18rem" }}>
+      <div className="card position-relative" style={{ width: "18rem" }}>
         <img
           src={product.images[0]}
           className="card-img-top product-image"
           alt="..."
         />
+        <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+          {product.rating} <MdOutlineStar className="rating-icon" />
+        </span>
         <div className="card-body">
-          <h6 className="card-title">{product.title}</h6>
-          <h7 className="card-text">Rs.{product.price}</h7>
+          <h5 className="card-title">{product.title}</h5>
+          <h6 className="card-text">
+            Rs.{product.price}
+            <span className="mx-1 text-danger">
+              (-{product.discountPercentage}%)
+            </span>
+          </h6>
           <a href="#" className="btn btn-primary add-cart-btn">
             Add to Cart
           </a>

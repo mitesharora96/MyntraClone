@@ -1,0 +1,19 @@
+.cart-icon {
+  font-size: x-large;
+}
+.main-container {
+  min-height: 70vh;
+}
+.products-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 120px;
+  flex-wrap: wrap;
+  padding: 3rem;
+}
+.product-image {
+  height: 250px;
+}
+.add-cart-btn {
+  width: 100%;
+}

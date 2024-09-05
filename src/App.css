@@ -20,3 +20,21 @@
 .rating-icon {
   font-size: large;
 }
+.cart-items {
+  flex-direction: row !important;
+  position: relative;
+}
+.selected-item-image {
+  width: 220px !important;
+  height: auto;
+}
+.cart-trash-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+.summary-box {
+  border: 1px solid rgba(0, 0, 0, 0.175);
+  border-radius: 8px;
+  padding: 2rem;
+}

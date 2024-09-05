@@ -80,7 +80,7 @@ const CartItems = () => {
           </span>
         </h6>
         <h6>
-          <span class="badge bg-danger">Rating - {product.rating}</span>
+          <span className="badge bg-danger">Rating - {product.rating}</span>
         </h6>
       </div>
     </div>

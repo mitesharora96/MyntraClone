@@ -1,19 +1,12 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-const productsSlice = createSlice({
-  name: "products",
-  initialState: { productList: [] },
-  reducers: {
-    loadProductsReducer: (state, actions) => {
-      state.productList = actions.payload;
-    },
-  },
-});
+import { configureStore } from "@reduxjs/toolkit";
+import productsSlice from "./productsSlice";
+import cartSlice from "./cartSlice";
 
 const productStore = configureStore({
   reducer: {
     products: productsSlice.reducer,
+    cartItems: cartSlice.reducer,
   },
 });
-export const productActions = productsSlice.actions;
+
 export default productStore;

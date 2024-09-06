@@ -1,6 +1,16 @@
 import { MdOutlineStar } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../Store/cartSlice";
 
 const ProductCard = ({ product }) => {
+  const cartItems = useSelector((items) => items.cartItems?.cartList);
+  const cartDispatcher = useDispatch();
+  const addCartItem = () => {
+    cartDispatcher(cartActions.addToCart(product.id));
+  };
+  const removeCartItem = () => {
+    cartDispatcher(cartActions.removeFromCart(product.id));
+  };
   return (
     <>
       <div className="card position-relative" style={{ width: "18rem" }}>
@@ -20,12 +30,39 @@ const ProductCard = ({ product }) => {
               (-{product.discountPercentage}%)
             </span>
           </h6>
-          <a href="#" className="btn btn-primary add-cart-btn">
+
+          {cartItems?.includes(product.id) ? (
+            <a
+              xlinkHref="#"
+              className="btn btn-danger add-cart-btn"
+              onClick={removeCartItem}
+            >
+              Remove from Cart
+            </a>
+          ) : (
+            <a
+              xlinkHref="#"
+              className="btn btn-primary add-cart-btn"
+              onClick={addCartItem}
+            >
+              Add to Cart
+            </a>
+          )}
+
+          {/* <a
+            xlinkHref="#"
+            className="btn btn-primary add-cart-btn"
+            onClick={addCartItem}
+          >
             Add to Cart
           </a>
-          <a href="#" className="btn btn-danger add-cart-btn">
+          <a
+            xlinkHref="#"
+            className="btn btn-danger add-cart-btn"
+            onClick={removeCartItem}
+          >
             Remove from Cart
-          </a>
+          </a> */}
         </div>
       </div>
     </>

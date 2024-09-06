@@ -5,7 +5,7 @@ import Footer from "./Components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { productActions } from "./Store";
+import { productActions } from "./Store/productsSlice";
 
 function App() {
   let productList = [];

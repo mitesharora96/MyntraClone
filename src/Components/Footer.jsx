@@ -5,11 +5,7 @@ const Footer = () => {
         <a
           href="/"
           className="d-flex align-items-center mb-3 link-dark text-decoration-none"
-        >
-          <svg className="bi me-2" width="40" height="32">
-            <use xlink:href="#bootstrap"></use>
-          </svg>
-        </a>
+        ></a>
         <p className="text-muted">© 2024</p>
       </div>
 

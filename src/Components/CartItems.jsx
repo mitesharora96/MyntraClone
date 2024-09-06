@@ -1,86 +1,35 @@
 import { FaTrashAlt } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../Store/cartSlice";
 
-const CartItems = () => {
-  const product = {
-    id: 1,
-    title: "Essence Mascara Lash Princess",
-    description:
-      "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
-    category: "beauty",
-    price: 9.99,
-    discountPercentage: 7.17,
-    rating: 4.94,
-    stock: 5,
-    tags: ["beauty", "mascara"],
-    brand: "Essence",
-    sku: "RCH45Q1A",
-    weight: 2,
-    dimensions: {
-      width: 23.17,
-      height: 14.43,
-      depth: 28.01,
-    },
-    warrantyInformation: "1 month warranty",
-    shippingInformation: "Ships in 1 month",
-    availabilityStatus: "Low Stock",
-    reviews: [
-      {
-        rating: 2,
-        comment: "Very unhappy with my purchase!",
-        date: "2024-05-23T08:56:21.618Z",
-        reviewerName: "John Doe",
-        reviewerEmail: "john.doe@x.dummyjson.com",
-      },
-      {
-        rating: 2,
-        comment: "Not as described!",
-        date: "2024-05-23T08:56:21.618Z",
-        reviewerName: "Nolan Gonzalez",
-        reviewerEmail: "nolan.gonzalez@x.dummyjson.com",
-      },
-      {
-        rating: 5,
-        comment: "Very satisfied!",
-        date: "2024-05-23T08:56:21.618Z",
-        reviewerName: "Scarlett Wright",
-        reviewerEmail: "scarlett.wright@x.dummyjson.com",
-      },
-    ],
-    returnPolicy: "30 days return policy",
-    minimumOrderQuantity: 24,
-    meta: {
-      createdAt: "2024-05-23T08:56:21.618Z",
-      updatedAt: "2024-05-23T08:56:21.618Z",
-      barcode: "9164035109868",
-      qrCode: "https://assets.dummyjson.com/public/qr-code.png",
-    },
-    images: [
-      "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png",
-    ],
-    thumbnail:
-      "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
+const CartItems = ({ item }) => {
+  const productList = useSelector((store) => store?.products?.productList);
+  const product = productList?.filter((pro) => pro?.id == item)[0];
+  const cartDispatcher = useDispatch();
+  const removeCartItem = () => {
+    cartDispatcher(cartActions.removeFromCart(product.id));
   };
   return (
     <div className="card cart-items my-3">
-      <span className="cart-trash-icon">
+      <span onClick={removeCartItem} className="cart-trash-icon">
         <FaTrashAlt />
       </span>
       <img
-        src={product.images[0]}
+        src={product?.images[0]}
         className="card-img-top selected-item-image"
         alt="..."
       />
       <div className="card-body">
-        <h5 className="card-title">{product.title}</h5>
-        <p className="card-text">{product.description}</p>
+        <h5 className="card-title">{product?.title}</h5>
+        <p className="card-text">{product?.description}</p>
         <h6 className="card-text">
-          Rs. {product.price}
+          Rs. {product?.price}
           <span className="mx-1 text-danger">
-            (-{product.discountPercentage}%)
+            (-{product?.discountPercentage}%)
           </span>
         </h6>
         <h6>
-          <span className="badge bg-danger">Rating - {product.rating}</span>
+          <span className="badge bg-danger">Rating - {product?.rating}</span>
         </h6>
       </div>
     </div>

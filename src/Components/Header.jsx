@@ -1,8 +1,10 @@
 import { FaCartShopping } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const cartItems = useSelector((items) => items.cartItems?.cartList);
   return (
     <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-2 border-bottom mx-3">
       <Link
@@ -45,7 +47,8 @@ const Header = () => {
           <span type="button" className=" position-relative">
             <FaCartShopping className="cart-icon" />
             <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              0<span className="visually-hidden">unread messages</span>
+              {cartItems?.length}
+              <span className="visually-hidden">unread messages</span>
             </span>
           </span>
         </Link>

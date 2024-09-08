@@ -40,3 +40,10 @@
   border-radius: 8px;
   padding: 2rem;
 }
+.pro-detail-image {
+  width: 40%;
+  height: 500px;
+}
+.pro-details {
+  border-left: 1px solid var(--bs-border-color);
+}

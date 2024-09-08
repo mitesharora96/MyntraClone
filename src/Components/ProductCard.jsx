@@ -1,6 +1,7 @@
 import { MdOutlineStar } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../Store/cartSlice";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const cartItems = useSelector((items) => items.cartItems?.cartList);
@@ -14,16 +15,20 @@ const ProductCard = ({ product }) => {
   return (
     <>
       <div className="card position-relative" style={{ width: "18rem" }}>
-        <img
-          src={product.images[0]}
-          className="card-img-top product-image"
-          alt="..."
-        />
+        <Link to={"/product/" + product.id}>
+          <img
+            src={product.images[0]}
+            className="card-img-top product-image"
+            alt="..."
+          />
+        </Link>
         <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
           {product.rating} <MdOutlineStar className="rating-icon" />
         </span>
         <div className="card-body">
+          {/* <Link to={"/product/" + product.id}> */}
           <h5 className="card-title">{product.title}</h5>
+          {/* </Link> */}
           <h6 className="card-text">
             Rs.{product.price}
             <span className="mx-1 text-danger">

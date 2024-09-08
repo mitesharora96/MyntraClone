@@ -7,6 +7,9 @@ import HomePage from "./Components/HomePage.jsx";
 import CartPage from "./Components/CartPage.jsx";
 import { Provider } from "react-redux";
 import productStore from "./Store/index.js";
+import ProductDetail, {
+  getProductDetail,
+} from "./Components/ProductDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +18,13 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage></HomePage> },
       { path: "/home", element: <HomePage></HomePage> },
+      {
+        path: "/product/:id",
+        element: <ProductDetail></ProductDetail>,
+        loader: ({ params }) => {
+          return getProductDetail(params.id);
+        },
+      },
       { path: "/my-cart", element: <CartPage></CartPage> },
       { path: "/features", element: <CartPage></CartPage> },
       { path: "/pricing", element: <CartPage></CartPage> },
